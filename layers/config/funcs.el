@@ -1,0 +1,42 @@
+;; -*- mode: emacs-lisp; lexical-binding: t -*-
+
+(defun go-to-projects ()
+  (interactive)
+  (find-file (concat org-directory "/todo.org"))
+  (widen)
+  (beginning-of-buffer)
+  (re-search-forward "* 1 Projects")
+  (beginning-of-line))
+
+(defun project-overview ()
+  (interactive)
+  (go-to-projects)
+  (org-narrow-to-subtree)
+  (org-sort-entries t ?p)
+  (org-columns))
+
+(defun project-deadline-overview ()
+  (interactive)
+  (go-to-projects)
+  (org-narrow-to-subtree)
+  (org-sort-entries t ?d)
+  (org-columns))
+
+(defun my-org-agenda-list-stuck-projects ()
+  (interactive)
+  (go-to-projects)
+  (org-agenda nil "#" 'subtree))
+
+(defun go-to-areas ()
+  (interactive)
+  (find-file (concat org-directory "/todo.org"))
+  (widen)
+  (beginning-of-buffer)
+  (re-search-forward "* 2 Areas")
+  (beginning-of-line))
+
+(defun areas-overview ()
+  (interactive)
+  (go-to-areas)
+  (org-narrow-to-subtree)
+  (org-columns))
