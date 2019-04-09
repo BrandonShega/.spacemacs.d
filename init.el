@@ -6,7 +6,8 @@
    dotspacemacs-enable-lazy-installation 'unused
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layers '((config :location local)
-                                       (display :location local))
+                                       (display :location local)
+                                       (personal :location local))
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
@@ -27,18 +28,20 @@
    dotspacemacs-elpa-subdirectory 'emacs-version
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
+   dotspacemacs-startup-banner nil
+   dotspacemacs-startup-lists nil
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(dracula
+   dotspacemacs-themes '(doom-solarized-light
+                         doom-molokai
+                         doom-one
+                         doom-dracula
                          spacemacs-dark
                          spacemacs-light)
-   dotspacemacs-mode-line-theme 'all-the-icons
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-mode-line-theme 'doom
+   dotspacemacs-default-font '("Monaco"
                                :size 13
                                :weight normal
                                :width normal)
@@ -101,6 +104,7 @@
   (add-to-list 'package-pinned-packages '(spaceline-all-the-icons . "melpa-stable"))
   (add-to-list 'package-pinned-packages '(all-the-icons . "melpa-stable"))
   (setq custom-file "~/.spacemacs.d/.custom-settings.el")
+  (load custom-file)
   )
 
 (defun dotspacemacs/user-load ()

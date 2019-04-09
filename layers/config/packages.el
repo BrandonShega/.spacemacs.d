@@ -10,38 +10,50 @@
         s
         eshell
         outshine
+        visual-regexp
+        visual-regexp-steroids
         ))
 
 (defun config/init-magithub ()
-  (use-package magithub))
+  (use-package magithub
+    :defer t))
 
 (defun config/init-mocha ()
-  (use-package mocha))
+  (use-package mocha
+    :defer t))
 
 (defun config/init-org-jira ()
   (use-package org-jira
+    :defer t
     :config
     (setq jiralib-url "https://gpgdigital.atlassian.net")))
 
 (defun config/init-mac-pseudo-daemon ()
-  (use-package mac-pseudo-daemon))
+  (use-package mac-pseudo-daemon
+    :defer t
+    :config
+    (setq mac-pseudo-daemon-mode t)))
 
 (defun config/init-lsp-sourcekit ()
   (use-package lsp-sourcekit
+    :defer t
     :config
     (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Library/Developer/Toolchains/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-22-a.xctoolchain")
     (setq lsp-sourcekit-executable (expand-file-name "~/Documents/personal-dev/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp"))))
 
 (defun config/init-s ()
-  (use-package s))
+  (use-package s
+    :defer t))
 
 (defun config/pre-init-eshell ()
   (spacemacs|use-package-add-hook eshell
+    :defer t
     :post-init
     (evil-define-key '(normal insert) 'global (kbd "C-e") 'eshell-pop-eshell)))
 
 (defun config/init-outshine ()
   (use-package outshine
+    :defer t
     :hook ((prog-mode          . outline-minor-mode)
            (outline-minor-mode . outshine-mode))
 
@@ -84,3 +96,15 @@
           (advice-add 'org-insert-heading    :before 'org-fix-heading-pos)
           (advice-add 'org-insert-heading    :after 'evil-insert-advice)
           (advice-add 'org-insert-subheading :after 'evil-insert-advice))))))
+
+(defun config/init-visual-regexp ()
+  (use-package visual-regexp
+    :defer t
+    :init
+    (spacemacs/set-leader-keys
+      "Rr" 'vr/replace
+      "Rs" 'vr/query-replace)))
+
+(defun config/init-visual-regexp-steroids ()
+  (use-package visual-regexp-steroids
+    :defer t))

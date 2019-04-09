@@ -3,10 +3,6 @@
 (configuration-layer/declare-layers
   '(csv
     helm
-    (auto-completion :variables
-                     auto-completion-return-key-behavior 'complete
-                     auto-completion-tab-key-behavior 'complete
-                     auto-completion-enable-snippets-in-popup t)
     emacs-lisp
     git
     swift
@@ -20,13 +16,21 @@
     syntax-checking
     spotify
     search-engine
-    personal-config
-    visual-regexp
     lsp
     treemacs
     dap
     finance
     twitter
+    rcirc
+    web-beautify
+    prettier
+    osx
+    (json :variables
+          json-fmt-tool 'web-beautify)
+    (auto-completion :variables
+                     auto-completion-return-key-behavior 'complete
+                     auto-completion-tab-key-behavior 'complete
+                     auto-completion-enable-snippets-in-popup t)
     (python :variables
             python-backend 'lsp
             python-pipenv-activate t
@@ -34,8 +38,8 @@
     (java :variables
           java-backend 'lsp)
     (typescript :variables
-                typescript-backend 'tide
-                tide-tsserver-executable "/Users/bshega/.nvm/versions/node/v9.8.0/bin/tsserver")
+                typescript-backend 'lsp)
+                ;; tide-tsserver-executable "/Users/bshega/.nvm/versions/node/v9.8.0/bin/tsserver")
     (org :variables
         org-want-todo-bindings t)
     (version-control :variables
@@ -51,9 +55,9 @@
     (shell :variables
           shell-default-height 30
           shell-default-position 'bottom)
-    (dash :variables
-          helm-dash-docsets-path "~/Library/Application Support/Dash/DocSets")
     (mu4e :variables
           mu4e-enable-notifications t
-          mu4e-enable-mode-line t)
+          mu4e-enable-mode-line t
+          mu4e-installation-path "~/Dropbox/opt/mu/mu4e"
+          mu4e-mu-binary "~/Dropbox/opt/mu/mu/mu")
     ))

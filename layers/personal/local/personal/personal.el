@@ -1,43 +1,85 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 
+(require 'mu4e)
+(provide 'personal)
+
 (setq js2-mode-show-parse-errors nil
       js2-mode-show-strict-warnings nil)
 
-(setq git-gutter:modified-sign " ")
-(setq git-gutter:added-sign " ")
-(setq git-gutter:deleted-sign " ")
-(set-face-background 'git-gutter:modified "orange")
-(set-face-background 'git-gutter:added "green")
-(set-face-background 'git-gutter:deleted "red")
+(setq initial-buffer-choice t)
+(setq vc-follow-symlinks t)
 
 (setq mu4e-maildir (expand-file-name "~/mail"))
 
 (setq mu4e-update-interval 60
       mu4e-get-mail-command "true"
       mu4e-view-show-images t
-      mu4e-view-show-addresses t)
+      mu4e-view-show-addresses t
+      mu4e-completing-read-function 'completing-read
+      mu4e-get-mail-command "mbsync -aq"
+      mu4e-update-interval 300
+      mu4e-change-filenames-when-moving t
+      mu4e-sent-messages-behavior (lambda ()
+                                    (if (string= (message-sendmail-envelope-from) "b.shega@icloud.com")
+                                        'sent 'delete))
+      mu4e-html2text-command 'mu4e-shr2text)
+      ;; mu4e-html2text-command "iconv -c -t utf8 | pandoc -f html -t plain")
+
+(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 
 (setq mu4e-bookmarks
       `(
         ("maildir:/work/Inbox OR maildir:/home/Inbox" "All Inboxes" ?i)
-        ("maildir:/home/Inbox" "Gmail" ?g)
-        ("maildir:/work/Inbox" "Exchange" ?e)
-        ("flag:unread AND NOT flag:trashed" "Unread Messages" ?u)
+        ("maildir:/work/Inbox" "Work" ?w)
+        ("maildir:/personal/Inbox" "Personal" ?p)
+        ("(maildir:/work/Inbox OR maildir:/personal/Inbox) AND flag:unread AND NOT flag:trashed" "Unread Messages" ?u)
         ))
 
-(setq mu4e-completing-read-function 'completing-read)
+(setq mu4e-contexts
+      `( ,(make-mu4e-context
+      :name "Work"
+      :match-func (lambda (msg) (when msg (string-prefix-p "/work" (mu4e-message-field msg :maildir))))
+      :vars '(
+                  (mu4e-trash-folder . "/work/Trash")
+                  (mu4e-sent-folder . "/work/Sent")
+                  (mu4e-drafts-folder . "/work/Drafts")
+                  (user-mail-address . "brandon.shega@fbgpg.com")
+                  (user-full-name . "Brandon Shega")
+                  (smtpmail-smtp-user . "moencorp\\bshega")
+                  (smtpmail-local-domain . "localhost")
+                  (smtpmail-smtp-server . "localhost")
+                  (smtpmail-smtp-service . 1025)
+                  ))
+      ,(make-mu4e-context
+        :name "Personal"
+        :match-func (lambda (msg) (when msg (string-prefix-p "/personal" (mu4e-message-field msg :maildir))))
+        :vars '(
+                (mu4e-trash-folder . "/personal/Trash")
+                (mu4e-sent-folder . "/personal/Sent Messages")
+                (mu4e-drafts-folder . "/personal/Drafts")
+                (user-mail-address . "b.shega@icloud.com")
+                (user-full-name . "Brandon Shega")
+                (smtpmail-smtp-user . "b.shega")
+                (smtpmail-local-domain . "mail.me.com")
+                (smtpmail-smtp-server . "smtp.mail.me.com")
+                (smtpmail-smtp-service . 587)
+                (smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
+                ))
+      ))
 
-(setq mu4e-html2text-command 'mu4e-shr2text)
-(add-hook 'mu4e-view-mode-hook
-          (lambda()
-            ;; try to emulate some of the eww key-bindings
-            (local-set-key (kbd "<tab>") 'shr-next-link)
-            (local-set-key (kbd "<backtab>") 'shr-previous-link)))
+(add-hook 'mu4e-view-mode-hook #'visual-line-mode)
+(add-hook 'mu4e-compose-mode-hook #'flyspell-mode)
+
+(setq mail-user-agent 'mu4e-user-agent)
+
 (setq shr-color-visible-luminance-min 80)
-
 (setq shr-color-visible-distance-min 5)
 
+(setq message-send-mail-function 'smtpmail-send-it)
+
 (mu4e-alert-set-default-style 'notifier)
+(setq mu4e-alert-interesting-mail-query "(maildir:/work/Inbox OR maildir:/personal/Inbox) AND flag:unread AND NOT flag:trashed")
+(setq mu4e-alert-email-notification-types '(subjects))
 
 (setq org-directory "~/Dropbox/Organization"
       org-default-notes-file (concat org-directory "/notes.org")
