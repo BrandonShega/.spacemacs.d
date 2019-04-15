@@ -33,10 +33,10 @@
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(doom-solarized-light
+   dotspacemacs-themes '(doom-dracula
                          doom-molokai
+                         doom-solarized-light
                          doom-one
-                         doom-dracula
                          spacemacs-dark
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
