@@ -40,15 +40,16 @@
       :name "Work"
       :match-func (lambda (msg) (when msg (string-prefix-p "/work" (mu4e-message-field msg :maildir))))
       :vars '(
-                  (mu4e-trash-folder . "/work/Trash")
-                  (mu4e-sent-folder . "/work/Sent")
+                  (mu4e-trash-folder . "/work/Deleted Items")
+                  (mu4e-sent-folder . "/work/Sent Items")
                   (mu4e-drafts-folder . "/work/Drafts")
                   (user-mail-address . "brandon.shega@fbgpg.com")
                   (user-full-name . "Brandon Shega")
-                  (smtpmail-smtp-user . "moencorp\\bshega")
-                  (smtpmail-local-domain . "localhost")
-                  (smtpmail-smtp-server . "localhost")
-                  (smtpmail-smtp-service . 1025)
+                  (smtpmail-smtp-user . "brandon.shega@fbgpg.com")
+                  (smtpmail-local-domain . "office365.com")
+                  (smtpmail-smtp-server . "smtp.office365.com")
+                  (smtpmail-smtp-service . 587)
+                  (smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
                   ))
       ,(make-mu4e-context
         :name "Personal"
