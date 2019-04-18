@@ -1,3 +1,0 @@
-[submodule "layers/display/local/emacs-snazzy"]
-	path = layers/display/local/emacs-snazzy
-	url = https://github.com/baransu/emacs-snazzy.git
