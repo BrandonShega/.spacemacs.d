@@ -25,6 +25,8 @@
     web-beautify
     prettier
     osx
+    (javascript :variables
+                javascript-backend 'lsp)
     (json :variables
           json-fmt-tool 'web-beautify)
     (auto-completion :variables
