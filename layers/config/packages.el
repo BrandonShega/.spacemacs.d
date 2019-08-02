@@ -4,7 +4,6 @@
       '(
         magithub
         mocha
-        org-jira
         mac-pseudo-daemon
         lsp-sourcekit
         s
@@ -21,12 +20,6 @@
 (defun config/init-mocha ()
   (use-package mocha
     :defer t))
-
-(defun config/init-org-jira ()
-  (use-package org-jira
-    :defer t
-    :config
-    (setq jiralib-url "https://gpgdigital.atlassian.net")))
 
 (defun config/init-mac-pseudo-daemon ()
   (use-package mac-pseudo-daemon

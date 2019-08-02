@@ -100,3 +100,5 @@
 (spacemacs/set-leader-keys "aogl" 'project-deadline-overview)
 (spacemacs/set-leader-keys "aogs" 'my-org-agenda-list-stuck-projects)
 (spacemacs/set-leader-keys "aoga" 'go-to-areas)
+
+(setq jiralib-url "https://gpgdigital.atlassian.net")

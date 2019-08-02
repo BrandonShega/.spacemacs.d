@@ -6,3 +6,5 @@
 (setq doom-modeline-irc t)
 
 (fringe-mode '4)
+
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))

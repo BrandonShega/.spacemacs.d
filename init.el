@@ -17,7 +17,7 @@
 (defun dotspacemacs/init ()
   (setq-default
    dotspacemacs-enable-emacs-pdumper nil
-   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   dotspacemacs-emacs-pdumper-executable-file "emacs"
    dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
@@ -33,8 +33,9 @@
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(doom-dracula
+   dotspacemacs-themes '(base16-material
                          doom-molokai
+                         doom-dracula
                          doom-solarized-light
                          doom-one
                          spacemacs-dark
@@ -66,7 +67,7 @@
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup t
+   dotspacemacs-maximized-at-startup nil
    dotspacemacs-active-transparency 90
    dotspacemacs-inactive-transparency 90
    dotspacemacs-show-transient-state-title t
