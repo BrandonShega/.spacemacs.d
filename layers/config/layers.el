@@ -2,7 +2,7 @@
 
 (configuration-layer/declare-layers
   '(csv
-    helm
+    ivy
     emacs-lisp
     git
     swift
@@ -25,6 +25,8 @@
     web-beautify
     prettier
     osx
+    themes-megapack
+    multiple-cursors
     (javascript :variables
                 javascript-backend 'lsp)
     (json :variables
@@ -43,7 +45,8 @@
                 typescript-backend 'lsp)
                 ;; tide-tsserver-executable "/Users/bshega/.nvm/versions/node/v9.8.0/bin/tsserver")
     (org :variables
-        org-want-todo-bindings t)
+         org-want-todo-bindings t
+         org-enable-github-support t)
     (version-control :variables
                     version-control-diff-tool 'diff-hl
                     version-control-global-margin t

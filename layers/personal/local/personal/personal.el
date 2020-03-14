@@ -1,7 +1,10 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
-
 (require 'mu4e)
 (provide 'personal)
+
+(setq user-full-name "Brandon Shega"
+      user-mail-address "b.shega@gmail.com"
+      epa-file-encrypt-to user-mail-address)
 
 (setq js2-mode-show-parse-errors nil
       js2-mode-show-strict-warnings nil)
@@ -82,9 +85,20 @@
 (setq mu4e-alert-interesting-mail-query "(maildir:/work/Inbox OR maildir:/personal/Inbox) AND flag:unread AND NOT flag:trashed")
 (setq mu4e-alert-email-notification-types '(subjects))
 
-(setq org-directory "~/Dropbox/Organization"
+(setq org-agenda-use-time-grid nil
+      org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-habit-show-habits t
+      org-directory "~/Dropbox/Organization"
       org-default-notes-file (concat org-directory "/notes.org")
-      org-agenda-files (list org-directory))
+      org-agenda-files (list org-directory)
+      org-capture-templates
+        '(("g" "GTD")
+          ("r" "References")
+          ("d" "Diary")
+          ("n" "Notes")
+          ("t" "TODO")))
+
 (setq org-capture-templates
       '(
         ("t" "Task" entry (file "~/Dropbox/Organization/inbox.org")
@@ -93,6 +107,7 @@
         (file "~/Dropbox/Organization/templates/newprojecttemplate.org"))
         ("g" "Goal" entry (file+headline "~/Dropbox/Organization/goals.org" "Current Goals")
           (file "~/Dropbox/Organization/templates/newgoaltemplate.org"))))
+
 (spacemacs/declare-prefix "aog" "project")
 (spacemacs/set-leader-keys "aogp" 'go-to-projects)
 (spacemacs/set-leader-keys "aogn" 'project-overview)

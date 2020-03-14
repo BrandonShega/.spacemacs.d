@@ -33,7 +33,8 @@
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(base16-material
+   dotspacemacs-themes '(doom-snazzy
+                         doom-dracula
                          doom-molokai
                          doom-dracula
                          doom-solarized-light
@@ -42,8 +43,8 @@
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-mode-line-theme 'doom
-   dotspacemacs-default-font '("Monaco"
-                               :size 13
+   dotspacemacs-default-font '("JetBrainsMono Nerd Font"
+                               :size 12.0
                                :weight normal
                                :width normal)
    dotspacemacs-leader-key "SPC"
