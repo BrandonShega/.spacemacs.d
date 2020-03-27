@@ -43,7 +43,7 @@
                          spacemacs-light)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-mode-line-theme 'doom
-   dotspacemacs-default-font '("JetBrainsMono Nerd Font"
+   dotspacemacs-default-font '("JetBrains Mono Nerd Font"
                                :size 12.0
                                :weight normal
                                :width normal)

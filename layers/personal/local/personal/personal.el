@@ -6,6 +6,8 @@
       user-mail-address "b.shega@gmail.com"
       epa-file-encrypt-to user-mail-address)
 
+(setq company-idle-delay 0.0)
+
 (setq js2-mode-show-parse-errors nil
       js2-mode-show-strict-warnings nil)
 
