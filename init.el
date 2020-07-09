@@ -33,17 +33,10 @@
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-initial-scratch-message nil
-   dotspacemacs-themes '(doom-snazzy
-                         doom-dracula
-                         doom-molokai
-                         doom-dracula
-                         doom-solarized-light
-                         doom-one
-                         spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(doom-dracula)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-mode-line-theme 'doom
-   dotspacemacs-default-font '("JetBrains Mono Nerd Font"
+   dotspacemacs-default-font '("JetBrainsMono Nerd Font"
                                :size 12.0
                                :weight normal
                                :width normal)
