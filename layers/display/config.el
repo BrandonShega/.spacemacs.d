@@ -9,9 +9,9 @@
 
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italit t)
-(doom-themes-visual-bell-config)
-(doom-themes-neotree-config)
-(doom-themes-treemacs-config)
-(doom-themes-org-config)
+; (setq doom-themes-enable-bold t
+;       doom-themes-enable-italit t)
+; (doom-themes-visual-bell-config)
+; (doom-themes-neotree-config)
+; (doom-themes-treemacs-config)
+; (doom-themes-org-config)

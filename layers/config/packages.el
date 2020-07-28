@@ -5,7 +5,6 @@
         magithub
         mocha
         mac-pseudo-daemon
-        lsp-sourcekit
         s
         eshell
         outshine
@@ -26,13 +25,6 @@
     :defer t
     :config
     (setq mac-pseudo-daemon-mode t)))
-
-(defun config/init-lsp-sourcekit ()
-  (use-package lsp-sourcekit
-    :defer t
-    :config
-    (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Library/Developer/Toolchains/swift-5.0-DEVELOPMENT-SNAPSHOT-2019-01-22-a.xctoolchain")
-    (setq lsp-sourcekit-executable (expand-file-name "~/Documents/personal-dev/sourcekit-lsp/.build/x86_64-apple-macosx/debug/sourcekit-lsp"))))
 
 (defun config/init-s ()
   (use-package s

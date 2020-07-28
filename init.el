@@ -7,7 +7,8 @@
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layers '((config :location local)
                                        (display :location local)
-                                       (personal :location local))
+                                       (personal :location local)
+                                       (language :location local))
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
